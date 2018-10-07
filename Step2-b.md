@@ -17,7 +17,7 @@ L'équipe de développement en charge de la migration du site web de l'entrepris
 
 2- saisir __*"arm-webapp"*__ pour ajouter la ressource de type *sites*
 
-- remplacer **WEB_APP_NAME** par *__webApp__*
+- remplacer **WEB_APP_NAME** par *__[concat('webapp', uniqueString(resourceGroup().id))]__*
 - remplacer **APP_SERVICE_PLAN_NAME** par *__planApp__*
 
 ![](/assets/S2-ArmWebapp.png "Picture 2")
