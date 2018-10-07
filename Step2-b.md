@@ -11,7 +11,7 @@ L'équipe de développement en charge de la migration du site web de l'entrepris
 
 1- saisir __*"arm-plan"*__ pour ajouter la ressource de type *serverfarms*
 
-![](/assets/S2-1-.jpg "Picture 1")
+![](/assets/S2-ArmPlan.png "Picture 1")
 
 #### *web App*
 
@@ -20,7 +20,7 @@ L'équipe de développement en charge de la migration du site web de l'entrepris
 - remplacer **WEB_APP_NAME** par *__webApp__*
 - remplacer **APP_SERVICE_PLAN_NAME** par *__planApp__*
 
-![](/assets/S2-2-.jpg "Picture 2")
+![](/assets/S2-ArmWebapp.png "Picture 2")
 
 ### **Déploiement via Powershell**
 

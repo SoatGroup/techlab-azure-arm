@@ -8,17 +8,17 @@ Ajouter une Policy concernant les prochaines créations de machine virtuelle qui
 
 1- création d'un dossier __*"TechLab"*__ pour le lab
 
-![](/assets/1-.jpg "Picture 1")
+![](/assets/S0-Folder.png "Picture 1")
 
 2- ouvrir ce dossier dans Visual Code
 
 3- créer un fichier **"identity_policy.json"** à la racine du dossier
 
-![](/assets/S0-2-.jpg "Picture 2")
+![](/assets/S0-File.png "Picture 2")
 
 4- éditer le fichier JSON en tapant **"arm!"** et valider
 
-![](/assets/S0-3-.jpg "Picture 3")
+![](/assets/S0-Arm.png "Picture 3")
 
 5- cliquer entre **"[]"** de la propriété **"resources"** et copier la définition de la **Policy**
 
@@ -92,7 +92,7 @@ Ajouter une Policy concernant les prochaines créations de machine virtuelle qui
 ####	*PARAMETERS*
 8- cliquer entre **"{}"** de la propriété **"parameters"** et saisir __*"arm-parameter"*__ et valider
 
-![](/assets/7-.jpg "Picture 4")
+![](/assets/S0-Parameter.png "Picture 4")
 
 9- remplacer **"parameterName"** par __*"rgLocation"*__ 
 
@@ -130,5 +130,5 @@ New-AzureRMDeployment -Name demoPolicyAndRG -Location westeurope -TemplateFile i
 ```
 *Résultat du déploiement :*
 
-![](/assets/S0-14-.jpg "Picture 5")
+![](/assets/S0-Resultat.png "Picture 5")
 

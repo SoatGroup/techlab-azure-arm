@@ -8,13 +8,13 @@ Votre entreprise a besoin d'un environnement pour installer un service web legac
 
 1- créer un fichier **"template.json"** à la racine du dossier
 
-![](/assets/3-.jpg "Picture 1")
+![](/assets/S1-File.png "Picture 1")
 
 2- ajouter le squelette du template ARM dans le fichier JSON en tapant **_arm!_** et valider
 
 3- cliquer entre **"[]"** de la propriété **"resources"** et saisir __*arm-vm-windows*__ et valider
 
-![](/assets/5-.jpg "Picture 4")
+![](/assets/S1-ArmVmWindows.png "Picture 4")
 
 4- remplacer le mot en surbrillance **WindowsVM1** par __*demovm*__ 
 
@@ -84,8 +84,6 @@ Votre entreprise a besoin d'un environnement pour installer un service web legac
 
 ####	*PARAMETERS*
 10- pour ajouter un paramètre, cliquer entre **"{}"** de la propriété **"parameters"** et saisir __*arm-parameter*__ et valider
-
-![](/assets/7-.jpg "Picture 5")
 
 11- remplacer **"parameterName"** par __*"dnsNameForPublicIP"*__ et ajouter la description __*"Nom unique du DNS pour l'IP publique"*__
 
@@ -184,7 +182,7 @@ Il est possible d'utiliser les variables pour remplacer les identifiants trop lo
 
 23- remplacer la valeur de l'id du subnet par __*"[variables('subnetRef')]"*__
 
-![](/assets/20-.jpg "Picture 10")
+![](/assets/S1-SubnetRef.png "Picture 10")
 
 #### *TAG*
 24- ajouter un tag supplémentaire à la ressource de la machine virtuelle __*"BusinessUnit": "FINANCE"*__ pour la gestion des coûts
@@ -193,7 +191,7 @@ Il est possible d'utiliser les variables pour remplacer les identifiants trop lo
 
 25- pour générer ce fichier faite un clique droit sur le fichier template.json et sélectionner :
 
-![](/assets/22-.jpg "Picture 11")
+![](/assets/S1-ParametersFile.png "Picture 11")
 
 26- renseigner les valeurs comme ci-dessous :
 
@@ -217,13 +215,13 @@ New-AzureRmResourceGroupDeployment -Name ARMDeployment -ResourceGroupName demoAR
 
 *Résultat du déploiement :*
 
-![](/assets/S1-28-.jpg "Picture 12")
+![](/assets/S1-ResultatEchec.png "Picture 12")
 
 ### **Fichier template.json**
 
 29- ajouter **"Identity"** à la ressource machine virtuelle
 
-![](/assets/S1-32-.jpg "Picture 13")
+![](/assets/S1-IdentityVm.png "Picture 13")
 
 ### **Déploiement via Powershell**
 
@@ -235,4 +233,4 @@ New-AzureRmResourceGroupDeployment -Name ARMDeployment -ResourceGroupName demoAR
 
 *Résultat du déploiement :*
 
-![](/assets/S1-33-.jpg "Picture 13")
+![](/assets/S1-Resultat.png "Picture 13")
