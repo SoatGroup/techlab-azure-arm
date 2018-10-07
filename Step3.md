@@ -48,11 +48,11 @@ Avec les identifiants, l'équipe en charge du service web WCF ont pu mener à bi
     "appSettings": [
         {
             "Name": "STORAGEACCOUNT_NAME",
-            "Value": "[toLower('demovm0710storage')]"
+            "Value": "[variables('storageName')]"
         },
         {
             "Name": "STORAGEACCOUNT_PRIMARY_KEY",
-            "Value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', toLower('demovm0710storage')), '2015-06-15').key1]"
+            "Value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageName')), '2015-06-15').key1]"
         }
     ]
 }
