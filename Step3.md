@@ -7,12 +7,57 @@ Avec les identifiants, l'équipe en charge du service web WCF ont pu mener à bi
 
 ### **Fichier template.json**
 
-1- dans la ressource **Microsoft.Network/networkSecurityGroups** remplacer la valeur de **"sourcePortRange"** par **_62.62.62.1/32_**
-
-2- ajouter la nouvelle règle suivante
+1- dans la ressource **Microsoft.Network/networkSecurityGroups**, modifier la règle de sécurité **"rdp_rule"**, remplacer la valeur de la propriété **"sourcePortRange"** par **_62.62.62.1/32_**
 
 ```
-
+    "name": "rdp_rule",
+    "properties": {
+      "description": "Restricted RDP access",
+      "protocol": "Tcp",
+      "sourcePortRange": "*",
+      "destinationPortRange": "3389",
+      "sourceAddressPrefix": "62.62.62.1/32",
+      "destinationAddressPrefix": "*",
+      "access": "Allow",
+      "priority": 100,
+      "direction": "Inbound"
+    }
 ```
 
-### **Fichier template.parameters.json**
+2- ajouter une nouvelle règle de sécurité (*arm-nsgrule*)
+
+```
+    "name": "http_8090_rule",
+    "properties": {
+        "description": "Http 8090 port allowed",
+        "protocol": "Tcp",
+        "sourcePortRange": "*",
+        "destinationPortRange": "8090",
+        "sourceAddressPrefix": "*",
+        "destinationAddressPrefix": "*",
+        "access": "Allow",
+        "priority": 101,
+        "direction": "Inbound"
+    }
+```
+
+3- Dans la ressource **Microsoft.Web/sites**, ajouter les deux configurations relatives au compte de stockage
+
+```
+"siteConfig": {
+    "appSettings": [
+        {
+            "Name": "STORAGEACCOUNT_NAME",
+            "Value": "[toLower('demovm0710storage')]"
+        },
+        {
+            "Name": "STORAGEACCOUNT_PRIMARY_KEY",
+            "Value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', toLower('demovm0710storage')), '2015-06-15').key1]"
+        }
+    ]
+}
+```
+
+### **Déploiement via Powershell**
+
+Suivre la procédure de déploiement du Step 1 avec Powershell.
