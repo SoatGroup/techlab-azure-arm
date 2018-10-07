@@ -8,13 +8,13 @@ Votre entreprise a besoin d'un environnement pour installer un service web legac
 
 1- créer un fichier **"template.json"** à la racine du dossier
 
-![](assets\3-.jpg "Picture 1")
+![](https://github.com/SoatGroup/techlab-azure-arm/blob/master/assets/3-.jpg "Picture 1")
 
 4- ajouter le squelette du template ARM dans le fichier JSON en tapant **_arm!_** et valider
 
 5- cliquer entre **"[]"** de la propriété **"resources"** et saisir __*arm-vm-windows*__ et valider
 
-![](assets\5-.jpg "Picture 4")
+![](https://github.com/SoatGroup/techlab-azure-arm/blob/master/assets/5-.jpg "Picture 4")
 
 6- remplacer le mot en surbrillance **WindowsVM1** par __*demovm*__ 
 
@@ -85,7 +85,7 @@ Votre entreprise a besoin d'un environnement pour installer un service web legac
 ####	*PARAMETERS*
 12- pour ajouter un paramètre, cliquer entre **"{}"** de la propriété **"parameters"** et saisir __*arm-parameter*__ et valider
 
-![](assets\7-.jpg "Picture 5")
+![](https://github.com/SoatGroup/techlab-azure-arm/blob/master/assets/7-.jpg "Picture 5")
 
 13- remplacer **"parameterName"** par __*"dnsNameForPublicIP"*__ et ajouter la description __*"Nom unique du DNS pour l'IP publique"*__
 
@@ -184,7 +184,7 @@ Il est possible d'utiliser les variables pour remplacer les identifiants trop lo
 
 25- remplacer la valeur de l'id du subnet par __*"[variables('subnetRef')]"*__
 
-![](assets\20-.jpg "Picture 10")
+![](https://github.com/SoatGroup/techlab-azure-arm/blob/master/assets/20-.jpg "Picture 10")
 
 #### *TAG*
 26- ajouter un tag supplémentaire à la ressource de la machine virtuelle __*"BusinessUnit": "FINANCE"*__ pour la gestion des coûts
@@ -193,7 +193,7 @@ Il est possible d'utiliser les variables pour remplacer les identifiants trop lo
 
 27- pour générer ce fichier faite un clique droit sur le fichier template.json et sélectionner :
 
-![](assets\22-.jpg "Picture 11")
+![](https://github.com/SoatGroup/techlab-azure-arm/blob/master/assets/22-.jpg "Picture 11")
 
 28- renseigner les valeurs comme ci-dessous :
 
@@ -217,13 +217,13 @@ New-AzureRmResourceGroupDeployment -Name ARMDeployment -ResourceGroupName demoAR
 
 *Résultat du déploiement :*
 
-![](assets\S1-28-.jpg "Picture 12")
+![](https://github.com/SoatGroup/techlab-azure-arm/blob/master/assets/S1-28-.jpg "Picture 12")
 
 ### **Fichier template.json**
 
 31- ajouter **"Identity"** à la ressource machine virtuelle
 
-![](assets\S1-32-.jpg "Picture 13")
+![](https://github.com/SoatGroup/techlab-azure-arm/blob/master/assets/S1-32-.jpg "Picture 13")
 
 ### **Déploiement via Powershell**
 
@@ -235,4 +235,4 @@ New-AzureRmResourceGroupDeployment -Name ARMDeployment -ResourceGroupName demoAR
 
 *Résultat du déploiement :*
 
-![](assets\S1-33-.jpg "Picture 13")
+![](https://github.com/SoatGroup/techlab-azure-arm/blob/master/assets/S1-33-.jpg "Picture 13")
