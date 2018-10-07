@@ -10,15 +10,15 @@ Votre entreprise a besoin d'un environnement pour installer un service web legac
 
 ![](/assets/3-.jpg "Picture 1")
 
-4- ajouter le squelette du template ARM dans le fichier JSON en tapant **_arm!_** et valider
+2- ajouter le squelette du template ARM dans le fichier JSON en tapant **_arm!_** et valider
 
-5- cliquer entre **"[]"** de la propriété **"resources"** et saisir __*arm-vm-windows*__ et valider
+3- cliquer entre **"[]"** de la propriété **"resources"** et saisir __*arm-vm-windows*__ et valider
 
 ![](/assets/5-.jpg "Picture 4")
 
-6- remplacer le mot en surbrillance **WindowsVM1** par __*demovm*__ 
+4- remplacer le mot en surbrillance **WindowsVM1** par __*demovm*__ 
 
-7- rechercher l'extension de la machine virtuelle  **"demovmAzureDiagnostics"** et remplacer la par celle qui va nous permettre de configurer **IIS** :
+5- rechercher l'extension de la machine virtuelle  **"demovmAzureDiagnostics"** et remplacer la par celle qui va nous permettre de configurer **IIS** :
 
 ```
 {
@@ -49,11 +49,11 @@ Votre entreprise a besoin d'un environnement pour installer un service web legac
 }
 ```
 
-8- ajouter une ressource après la machine virtuelle, taper __*arm-nsg*__ puis valider
+6- ajouter une ressource après la machine virtuelle, taper __*arm-nsg*__ puis valider
 
-9- remplacer le mot en surbrillance par __*demovmNsg*__
+7- remplacer le mot en surbrillance par __*demovmNsg*__
 
-10- ajouter la règle de sécurité suivante (il est possible d'utiliser __*"arm-nsgrule"*__)
+8- ajouter la règle de sécurité suivante (il est possible d'utiliser __*"arm-nsgrule"*__)
 
 ```
 "securityRules": [
@@ -74,7 +74,7 @@ Votre entreprise a besoin d'un environnement pour installer un service web legac
 ]
 ```
 
-11- rechercher la ressource __"Microsoft.Network/networkInterfaces"__ dans ses propriétés à la suite de __"ipConfigurations"__ ajouter
+9- rechercher la ressource __"Microsoft.Network/networkInterfaces"__ dans ses propriétés à la suite de __"ipConfigurations"__ ajouter
 
  ```
 "networkSecurityGroup": {
@@ -83,11 +83,11 @@ Votre entreprise a besoin d'un environnement pour installer un service web legac
  ```
 
 ####	*PARAMETERS*
-12- pour ajouter un paramètre, cliquer entre **"{}"** de la propriété **"parameters"** et saisir __*arm-parameter*__ et valider
+10- pour ajouter un paramètre, cliquer entre **"{}"** de la propriété **"parameters"** et saisir __*arm-parameter*__ et valider
 
 ![](/assets/7-.jpg "Picture 5")
 
-13- remplacer **"parameterName"** par __*"dnsNameForPublicIP"*__ et ajouter la description __*"Nom unique du DNS pour l'IP publique"*__
+11- remplacer **"parameterName"** par __*"dnsNameForPublicIP"*__ et ajouter la description __*"Nom unique du DNS pour l'IP publique"*__
 
  ```
 "dnsNameForPublicIP": {
@@ -98,9 +98,9 @@ Votre entreprise a besoin d'un environnement pour installer un service web legac
 }
  ```
 
-14- ajouter un autre paramètre __*"adminUserName"*__ avec la description __*"Login du compte admin de la VM"*__
+12- ajouter un autre paramètre __*"adminUserName"*__ avec la description __*"Login du compte admin de la VM"*__
 
-15- ajouter un autre paramètre __*"adminPassword"*__ de type __"securestring"__ avec la description __*"Mot de passe du compte admin de la VM"*__
+13- ajouter un autre paramètre __*"adminPassword"*__ de type __"securestring"__ avec la description __*"Mot de passe du compte admin de la VM"*__
 
 ```
 "adminUserName": {
@@ -117,13 +117,13 @@ Votre entreprise a besoin d'un environnement pour installer un service web legac
 }
 ```
 
-16- rechercher la propriété __domainNameLabel__ et remplacer sa **valeur** par __*[parameters('dnsNameForPublicIP')]*__
+14- rechercher la propriété __domainNameLabel__ et remplacer sa **valeur** par __*[parameters('dnsNameForPublicIP')]*__
 
-17- chercher __ADMIN_USERNAME__ et remplacer par __*[parameters('adminUserName')]*__
+15- chercher __ADMIN_USERNAME__ et remplacer par __*[parameters('adminUserName')]*__
 
-18- chercher __ADMIN_PASSWORD__ et remplacer par __*[parameters('adminPassword')]*__
+16- chercher __ADMIN_PASSWORD__ et remplacer par __*[parameters('adminPassword')]*__
 
-19- ajouter le paramètre __*"windowsOSVersion"*__ avec la description __*"Version de Windows pour la VM"*__ :
+17- ajouter le paramètre __*"windowsOSVersion"*__ avec la description __*"Version de Windows pour la VM"*__ :
 
 - a- lui ajouter une propriété __*"allowedValues"*__ avec comme valeur le tableau 
 		__*["2012-R2-Datacenter-smalldisk", "2012-R2-Datacenter", "2008-R2-SP1"]*__
@@ -144,9 +144,9 @@ Votre entreprise a besoin d'un environnement pour installer un service web legac
 }
 ```
 
-20- rechercher la propriété __"sku"__ et remplacer sa __valeur__ par __*"[parameters('windowsOSVersion')]"*__
+18- rechercher la propriété __"sku"__ et remplacer sa __valeur__ par __*"[parameters('windowsOSVersion')]"*__
 
-21- ajouter les deux paramètres de l'extension **moduleName** et **configurationFunction** de type _**string**_
+19- ajouter les deux paramètres de l'extension **moduleName** et **configurationFunction** de type _**string**_
 
 ```
 "moduleName": {
@@ -165,37 +165,37 @@ Votre entreprise a besoin d'un environnement pour installer un service web legac
 ```
 
 #### *VARIABLES*
-22- ajouter deux variables via la commande __"arm-variable"__ :
+20- ajouter deux variables via la commande __"arm-variable"__ :
 
 - __*"addressPrefix":"10.0.0.0/16"*__
 - __*"subnetPrefix":"10.0.0.0/24"*__
 
-23- dans la ressource __"demovm-VirtualNetwork"__ remplacer les valeurs des adresses Ip par les variables :
+21- dans la ressource __"demovm-VirtualNetwork"__ remplacer les valeurs des adresses Ip par les variables :
 
 - __*[variables('addressPrefix')]*__
 - __*[variables('subnetPrefix')]*__
 
 Il est possible d'utiliser les variables pour remplacer les identifiants trop long, exemple avec l'id du subnet dans la ressource __"demovm-NetworkInterface"__. 
 
-24- Pour cela créer deux variables :
+22- Pour cela créer deux variables :
 
 - __"vnetId"__ avec la valeur __*"[resourceId('Microsoft.Network/virtualNetworks', 'demovm-VirtualNetwork')]"*__
 - __"subnetRef"__ avec la valeur __*"[concat(variables('vnetId'), '/subnets/demovm-VirtualNetwork-Subnet')]"*__
 
-25- remplacer la valeur de l'id du subnet par __*"[variables('subnetRef')]"*__
+23- remplacer la valeur de l'id du subnet par __*"[variables('subnetRef')]"*__
 
 ![](/assets/20-.jpg "Picture 10")
 
 #### *TAG*
-26- ajouter un tag supplémentaire à la ressource de la machine virtuelle __*"BusinessUnit": "FINANCE"*__ pour la gestion des coûts
+24- ajouter un tag supplémentaire à la ressource de la machine virtuelle __*"BusinessUnit": "FINANCE"*__ pour la gestion des coûts
 
 ### **Fichier template.parameters.json**
 
-27- pour générer ce fichier faite un clique droit sur le fichier template.json et sélectionner :
+25- pour générer ce fichier faite un clique droit sur le fichier template.json et sélectionner :
 
 ![](/assets/22-.jpg "Picture 11")
 
-28- renseigner les valeurs comme ci-dessous :
+26- renseigner les valeurs comme ci-dessous :
 
 - **"dnsNameForPublicIP"**  :  __*"demovmdns"*__
 - **"adminUserName"**  :  __*"adminDemo"*__
@@ -207,9 +207,9 @@ Il est possible d'utiliser les variables pour remplacer les identifiants trop lo
 
 ### **Déploiement via Powershell**
 
-29- afficher le terminal à l'aide du raccourci clavier **Ctrl+Shift+ù**
+27- afficher le terminal à l'aide du raccourci clavier **Ctrl+Shift+ù**
 
-30- lancer le déploiement avec la commande suivante : 
+28- lancer le déploiement avec la commande suivante : 
 
 ```
 New-AzureRmResourceGroupDeployment -Name ARMDeployment -ResourceGroupName demoARM -TemplateFile template.json -TemplateParameterFile template.parameters.json
@@ -221,13 +221,13 @@ New-AzureRmResourceGroupDeployment -Name ARMDeployment -ResourceGroupName demoAR
 
 ### **Fichier template.json**
 
-31- ajouter **"Identity"** à la ressource machine virtuelle
+29- ajouter **"Identity"** à la ressource machine virtuelle
 
 ![](/assets/S1-32-.jpg "Picture 13")
 
 ### **Déploiement via Powershell**
 
-32- relancer le déploiement avec la commande suivante : 
+30- relancer le déploiement avec la commande suivante : 
 
 ```
 New-AzureRmResourceGroupDeployment -Name ARMDeployment -ResourceGroupName demoARM -TemplateFile template.json -TemplateParameterFile template.parameters.json
