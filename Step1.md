@@ -150,7 +150,7 @@ Votre entreprise a besoin d'un environnement pour installer un service web legac
 "moduleName": {
   "type": "string",
   "metadata": {
-    "description": "URL for the DSC configuration module.
+    "description": "URL for the DSC configuration module."
   }
 },
 "configurationFunction": {
@@ -184,18 +184,27 @@ Il est possible d'utiliser les variables pour remplacer les identifiants trop lo
 
 ![](/assets/S1-SubnetRef.png "Picture 10")
 
+24- Ajouter une variable pour le nom du Storage Account
+- __"storageName": "[uniqueString(resourceGroup().id)]"__
+
+25- Remplacer les occurences du nom du storage par la variable précédemment créer
+- Dans le nom de la ressource Storage
+- Dans l'objet dependsOn de la machine virtuelle
+- Dans l'objet bootDiagnostics de la machine virtuelle
+
+
 #### *TAG*
-24- ajouter un tag supplémentaire à la ressource de la machine virtuelle __*"BusinessUnit": "FINANCE"*__ pour la gestion des coûts
+26- ajouter un tag supplémentaire à la ressource de la machine virtuelle __*"BusinessUnit": "FINANCE"*__ pour la gestion des coûts
 
 ### **Fichier template.parameters.json**
 
-25- pour générer ce fichier faite un clique droit sur le fichier template.json et sélectionner :
+27- pour générer ce fichier faite un clique droit sur le fichier template.json et sélectionner :
 
 ![](/assets/S1-ParametersFile.png "Picture 11")
 
-26- renseigner les valeurs comme ci-dessous :
+28- renseigner les valeurs comme ci-dessous :
 
-- **"dnsNameForPublicIP"**  :  __*"demovmdns"*__
+- **"dnsNameForPublicIP"**  :  __*"demovmdns"*__ (doit être unique, donc pas celui du voisin)
 - **"adminUserName"**  :  __*"adminDemo"*__
 - **"adminPassword"**  :  __*"P@ssw0rd#2018"*__
 - **"moduleName"**  :  __*"DemoARM.ps1"*__
@@ -205,9 +214,9 @@ Il est possible d'utiliser les variables pour remplacer les identifiants trop lo
 
 ### **Déploiement via Powershell**
 
-27- afficher le terminal à l'aide du raccourci clavier **Ctrl+Shift+ù**
+29- afficher le terminal à l'aide du raccourci clavier **Ctrl+Shift+ù**
 
-28- lancer le déploiement avec la commande suivante : 
+30- lancer le déploiement avec la commande suivante : 
 
 ```
 New-AzureRmResourceGroupDeployment -Name ARMDeployment -ResourceGroupName demoARM -TemplateFile template.json -TemplateParameterFile template.parameters.json
@@ -219,13 +228,13 @@ New-AzureRmResourceGroupDeployment -Name ARMDeployment -ResourceGroupName demoAR
 
 ### **Fichier template.json**
 
-29- ajouter **"Identity"** à la ressource machine virtuelle
+31- ajouter **"Identity"** à la ressource machine virtuelle
 
 ![](/assets/S1-IdentityVm.png "Picture 13")
 
 ### **Déploiement via Powershell**
 
-30- relancer le déploiement avec la commande suivante : 
+32- relancer le déploiement avec la commande suivante : 
 
 ```
 New-AzureRmResourceGroupDeployment -Name ARMDeployment -ResourceGroupName demoARM -TemplateFile template.json -TemplateParameterFile template.parameters.json
