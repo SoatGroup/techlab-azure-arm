@@ -15,12 +15,51 @@ L'équipe de développement en charge de la migration du site web de l'entrepris
 
 #### *web App*
 
-2- saisir __*"arm-webapp"*__ pour ajouter la ressource de type *sites*
+2- ajouter un paramètre pour le nom unique de la web app 
 
-- remplacer **WEB_APP_NAME** par *__[concat('webapp', uniqueString(resourceGroup().id))]__*
+```
+"webappName": {
+   "type": "string",
+   "metadata": {
+        "description": "Nom personnalisé"
+    }
+}
+```
+
+3- saisir __*"arm-webapp"*__ pour ajouter la ressource de type *sites*
+
+- remplacer **WEB_APP_NAME** par *__[parameters('webappName')]__*
 - remplacer **APP_SERVICE_PLAN_NAME** par *__planApp__*
 
-![](/assets/S2-ArmWebapp.png "Picture 2")
+```
+{
+    "apiVersion": "2015-08-01",
+    "name": "[parameters('webappName')]",
+    "type": "Microsoft.Web/sites",
+    "location": "[resourceGroup().location]",
+    "tags": {
+        "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/appPlan')]": "Resource",
+        "displayName": "[parameters('webappName')]"
+    },
+    "dependsOn": [
+        "Microsoft.Web/serverfarms/appPlan"
+    ],
+    "properties": {
+        "name": "[parameters('webappName')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', 'appPlan')]"
+    }
+}
+```
+
+### **Fichier template.parameters.json**
+
+4- renseigner la valeur pour le paramètre **webappName** (*pas celui du voisin*)
+
+```
+"webappName": {
+    "value": "..."
+}
+```
 
 ### **Déploiement via Powershell**
 

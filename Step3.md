@@ -95,7 +95,7 @@ L'équipe de développement vous demande également de mettre à disposition le 
     }
 ```
 
-7- Dans la ressource **Microsoft.Web/sites**, ajouter les deux configurations relatives au compte de stockage
+7- Dans la ressource **Microsoft.Web/sites**, ajouter les deux configurations relatives au compte de stockage dans les **properties**
 
 ```
 "siteConfig": {

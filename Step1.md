@@ -187,7 +187,7 @@ Il est possible d'utiliser les variables pour remplacer les identifiants trop lo
 24- Ajouter une variable pour le nom du Storage Account
 - __"storageName": "[uniqueString(resourceGroup().id)]"__
 
-25- Remplacer les occurences du nom du storage par la variable précédemment créer
+25- Remplacer les occurences du nom du storage **toLower('demovmstorage')** par la variable précédemment créer
 - Dans le nom de la ressource Storage
 - Dans l'objet dependsOn de la machine virtuelle
 - Dans l'objet bootDiagnostics de la machine virtuelle
@@ -239,6 +239,12 @@ New-AzureRmResourceGroupDeployment -Name ARMDeployment -ResourceGroupName demoAR
 ```
 New-AzureRmResourceGroupDeployment -Name ARMDeployment -ResourceGroupName demoARM -TemplateFile template.json -TemplateParameterFile template.parameters.json
 ```
+
+33- aller sur le portail Azure et surveiller le déploiement jusqu'à l'extension. 
+
+![](/assets/S1-AzDeploy.png "Picture 14")
+
+à ce stade vous pouvez passer au Step2-a car le déploiement dure environ 20 min.
 
 *Résultat du déploiement :*
 
