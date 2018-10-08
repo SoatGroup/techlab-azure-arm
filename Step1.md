@@ -166,9 +166,9 @@ Votre entreprise a besoin d'un environnement pour installer un service web legac
 20- ajouter deux variables via la commande __"arm-variable"__ :
 
 - __*"addressPrefix":"10.0.0.0/16"*__
-- __*"subnetPrefix":"10.0.0.0/24"*__
+- __*"subnetPrefix":"10.0.1.0/24"*__
 
-21- dans la ressource __"demovm-VirtualNetwork"__ remplacer les valeurs des adresses Ip par les variables :
+21- dans la ressource __"demovm-VirtualNetwork"__ remplacer le nom du subnet par __*Web*__ et les valeurs des adresses Ip par les variables :
 
 - __*[variables('addressPrefix')]*__
 - __*[variables('subnetPrefix')]*__
@@ -178,7 +178,7 @@ Il est possible d'utiliser les variables pour remplacer les identifiants trop lo
 22- Pour cela créer deux variables :
 
 - __"vnetId"__ avec la valeur __*"[resourceId('Microsoft.Network/virtualNetworks', 'demovm-VirtualNetwork')]"*__
-- __"subnetRef"__ avec la valeur __*"[concat(variables('vnetId'), '/subnets/demovm-VirtualNetwork-Subnet')]"*__
+- __"subnetRef"__ avec la valeur __*"[concat(variables('vnetId'), '/subnets/Web')]"*__
 
 23- remplacer la valeur de l'id du subnet par __*"[variables('subnetRef')]"*__
 
